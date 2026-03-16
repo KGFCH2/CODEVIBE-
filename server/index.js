@@ -11,24 +11,32 @@ const backend = express();
 const server = http.Server(backend);
 
 backend.use(express.json());
-backend.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://codevibeforyou.netlify.app" // ✅ add this
-  ],
-  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-}));
+
+backend.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://codevibeforyou.netlify.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    credentials: true,
+  })
+);
+
+// 👇 important line for preflight
+backend.options("*", cors());
 
 backend.use(routes);
 
-mongoose.connect(process.env.DB_URL)
+mongoose
+  .connect(process.env.DB_URL)
   .then(() => {
     const PORT = process.env.PORT || 5002;
-server.listen(PORT, () => {
-  console.log(`✅ Server Started on port ${PORT}`);
-  console.log("✅ Connected to MongoDB");
-});
 
+    server.listen(PORT, () => {
+      console.log(`✅ Server Started on port ${PORT}`);
+      console.log("✅ Connected to MongoDB");
+    });
   })
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err);

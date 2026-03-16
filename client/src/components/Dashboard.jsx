@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { FaSignOutAlt } from "react-icons/fa";
 const Dashboard = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")); 
@@ -27,28 +27,35 @@ const Dashboard = () => {
     <div className="dashboard" style={{ padding: "24px", color: "white" }}>
       <div className="dashboard-header" style={{ marginBottom: "24px" }}>
         <h1 style={{ fontSize: "2rem" }}>Welcome, {user.username} 🎉</h1>
-        <button
-          style={{
-            marginTop: "8px",
-            padding: "8px 16px",
-            borderRadius: "8px",
-            background: "linear-gradient(90deg,#ec4899,#d946ef)",
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-          }}
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
+       <button
+  style={{
+    marginTop: "8px",
+    padding: "8px 16px",
+    borderRadius: "8px",
+    background: "linear-gradient(var(--button-bg), var(--primary-red), var(--secondary-pink))",
+    color: "var(--white)",
+    border: "none",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  }}
+  onClick={handleLogout}
+>
+  <FaSignOutAlt style={{ color: "var(--white)" }} />
+  Logout
+</button>
       </div>
 
-      <div className="dashboard-card" style={{ marginBottom: "24px" }}>
-        <p><strong>👤 Username:</strong> {user.username}</p>
-        <p><strong>📧 Email:</strong> {user.email}</p>
-        <p><strong>🏫 College:</strong> {user.college}</p>
-        <p><strong>🎓 Year:</strong> {user.year}</p>
-      </div>
+    <div 
+  className="dashboard-card" 
+  style={{ marginBottom: "24px", color: "black" }}
+>
+  <p><strong>👤 Username:</strong> {user.username}</p>
+  <p><strong>📧 Email:</strong> {user.email}</p>
+  <p><strong>🏫 College:</strong> {user.college}</p>
+  <p><strong>🎓 Year:</strong> {user.year}</p>
+</div>
 
       {/* Courses to view progress */}
       <div className="courses" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
@@ -59,7 +66,7 @@ const Dashboard = () => {
             style={{
               padding: "10px 16px",
               borderRadius: "8px",
-              background: "linear-gradient(90deg,#ec4899,#d946ef)",
+              background: "linear-gradient( #ff113d, #ff4d6d, #ff85a1)",
               color: "#fff",
               border: "none",
               cursor: "pointer",
