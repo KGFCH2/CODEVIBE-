@@ -13,7 +13,7 @@ const Head = () => {
   return (
     <header>
       <div className="header-logo-wrapper">
-        <Link to="/" aria-label="Go to homepage" className="logo-link">
+        <Link to="/" aria-label="Go to homepage" className="logo-link" onClick={closeMobileMenu}>
           <img src={logo} alt="CodeVibe Logo" title="CodeVibe - Learn. Practice. Master." />
         </Link>
       </div>
