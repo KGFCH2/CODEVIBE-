@@ -35,7 +35,7 @@ const HtmlLesson2 = () => {
       </ol>
 
       <h3>
-        Note: <em>Opening tag looks like {'<element>'}, and closing tag looks like {'</element>'}. Can you see the difference? The closing tag has a "/" before the element name.</em>
+        Note:<em>Opening tag looks like {'<element>'}, and closing tag looks like {'</element>'}. Can you see the difference? The closing tag has a "/" before the element name.</em>
       </h3>
           <br/>
     <hr/>
@@ -103,7 +103,7 @@ const HtmlLesson2 = () => {
     <br/>
     <hr/>
 
-      <h2> 💻 Try Yourself, Follow Instruction !!!</h2>
+      <h2> 💻 Try Yourself, Follow Instruction !!</h2>
 
       <Compiler 
         LessonId="html-lesson2"
