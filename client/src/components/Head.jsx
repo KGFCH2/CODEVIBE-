@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from "../AuthProvider.jsx";
 import { FaSignInAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes } from "react-icons/fa";
 import logo from "../assets/websitelogo.png";
 
@@ -25,7 +26,8 @@ const Head = () => {
   const wrapperRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const { logout } = useAuth();
+  const isHomePage = location.pathname === '/' || location.pathname === '/lessons';
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -63,11 +65,9 @@ const Head = () => {
   };
 
 const handleLogout = () => {
-  localStorage.removeItem("user");
-  setUser(null);
-  closeMobileMenu();
+  logout();
+  setMenuOpen(false);
   navigate("/login");
-  window.location.reload();
 };
 
 const clearSearch = () => {
@@ -88,15 +88,15 @@ const clearSearch = () => {
 
         {/* Desktop Nav */}
         <nav className="header-nav" aria-label="Main navigation">
-          <Link to="/Login" className="nav-link">
+          <Link to="/login" className="nav-link">
             <FaSignInAlt className="nav-icon" />
             <span>Login</span>
           </Link>
-          <Link to="/Signup" className="nav-link">
+          <Link to="/signup" className="nav-link">
             <FaUserPlus className="nav-icon" />
             <span>Sign Up</span>
           </Link>
-          <Link to="/Dashboard" className="nav-link">
+          <Link to="/dashboard" className="nav-link">
             <FaTachometerAlt className="nav-icon" />
             <span>Dashboard</span>
           </Link>
@@ -117,13 +117,13 @@ const clearSearch = () => {
 
       {/* Mobile Nav Drawer */}
       <nav className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`} aria-label="Mobile navigation">
-        <Link to="/Login" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>
           <FaSignInAlt className="nav-icon" /><span>Login</span>
         </Link>
-        <Link to="/Signup" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>
           <FaUserPlus className="nav-icon" /><span>Sign Up</span>
         </Link>
-        <Link to="/Dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
           <FaTachometerAlt className="nav-icon" /><span>Dashboard</span>
         </Link>
       </nav>
