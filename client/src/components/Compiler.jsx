@@ -1,6 +1,8 @@
 // src/components/Compiler.jsx
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+// Dynamic API URL config resolving to localhost in dev and Render live server in production
+import API_BASE_URL from "../config/api";
 
 const SCORING = (attempt) =>
   attempt === 1 ? 100 :
@@ -136,7 +138,7 @@ const Compiler = ({
       })
     );
     axios
-      .post(`http://localhost:5002/api/lesson/${lessonId}/complete`, { email, score: sc })
+      .post(`${API_BASE_URL}/api/lesson/${lessonId}/complete`, { email, score: sc })
       .catch((err) => console.error("Save progress error:", err));
     onSuccess?.({ LessonId: lessonId, score: sc, tries: attempt });
   };
@@ -343,7 +345,7 @@ const Compiler = ({
     setErrorMessage("");
     try {
       const res = await axios.post(
-        `http://localhost:5002/api/execute/${language}`,
+        `${API_BASE_URL}/api/execute/${language}`,
         { email: localStorage.getItem("userEmail") || "guest@example.com", code },
         { timeout: 12000 }
       );
