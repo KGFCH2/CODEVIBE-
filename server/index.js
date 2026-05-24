@@ -20,17 +20,20 @@ const allowedOrigins = (
   "http://localhost:5173,http://localhost:3000,https://codevibeforyou.netlify.app"
 ).split(",").map(origin => origin.trim());
 
+const isLocalDevOrigin = (origin) => {
+  return /^(https?:\/\/)?(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(origin);
+};
+
 backend.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-        return;
-      }
-
-      // Allow Netlify preview branches for the CodeVibe site
-      if (/^https:\/\/deploy-preview-\d+--codevibeforyou\.netlify\.app$/.test(origin)) {
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        isLocalDevOrigin(origin) ||
+        /^https:\/\/deploy-preview-\d+--codevibeforyou\.netlify\.app$/.test(origin)
+      ) {
         callback(null, true);
         return;
       }
