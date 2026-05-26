@@ -1,22 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 const sections = [
   {
     id: 1,
-    icon: '👋',
-    title: 'Introduction',
+    icon: "👋",
+    title: "Introduction",
     content: (
       <p>
-        <strong>CodeVibe</strong> ("we," "us," "our," or "Company") is committed to protecting your
-        privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your
-        information when you visit our website and use our learning platform.
+        <strong>CodeVibe</strong> ("we," "us," "our," or "Company") is committed
+        to protecting your privacy. This Privacy Policy explains how we collect,
+        use, disclose, and safeguard your information when you visit our website
+        and use our learning platform.
       </p>
     ),
   },
   {
     id: 2,
-    icon: '📦',
-    title: 'Information We Collect',
+    icon: "📦",
+    title: "Information We Collect",
     content: (
       <>
         <h3 className="pp-sub-title">2.1 Personal Information</h3>
@@ -29,7 +30,10 @@ const sections = [
           <li>Password (encrypted)</li>
         </ul>
         <h3 className="pp-sub-title">2.2 Usage Information</h3>
-        <p>We automatically collect information about your interaction with the Service:</p>
+        <p>
+          We automatically collect information about your interaction with the
+          Service:
+        </p>
         <ul>
           <li>Pages visited</li>
           <li>Lessons completed</li>
@@ -51,8 +55,8 @@ const sections = [
   },
   {
     id: 3,
-    icon: '🎯',
-    title: 'How We Use Your Information',
+    icon: "🎯",
+    title: "How We Use Your Information",
     content: (
       <>
         <p>We use collected information for:</p>
@@ -70,49 +74,55 @@ const sections = [
   },
   {
     id: 4,
-    icon: '🍪',
-    title: 'Cookies and Tracking Technologies',
+    icon: "🍪",
+    title: "Cookies and Tracking Technologies",
     content: (
       <>
         <h3 className="pp-sub-title">4.1 Cookies</h3>
         <p>
-          We use cookies to enhance your browsing experience. Cookies are small files stored on
-          your device that help us remember your preferences and login status.
+          We use cookies to enhance your browsing experience. Cookies are small
+          files stored on your device that help us remember your preferences and
+          login status.
         </p>
         <h3 className="pp-sub-title">4.2 Types of Cookies</h3>
         <ul>
           <li>
-            <strong>Essential Cookies:</strong> Required for login and basic functionality
+            <strong>Essential Cookies:</strong> Required for login and basic
+            functionality
           </li>
           <li>
-            <strong>Performance Cookies:</strong> Help us understand how you use the platform
+            <strong>Performance Cookies:</strong> Help us understand how you use
+            the platform
           </li>
           <li>
-            <strong>Preference Cookies:</strong> Remember your settings and preferences
+            <strong>Preference Cookies:</strong> Remember your settings and
+            preferences
           </li>
         </ul>
         <h3 className="pp-sub-title">4.3 Controlling Cookies</h3>
         <p>
-          You can control cookies through your browser settings. However, disabling cookies may
-          affect the functionality of the platform.
+          You can control cookies through your browser settings. However,
+          disabling cookies may affect the functionality of the platform.
         </p>
       </>
     ),
   },
   {
     id: 5,
-    icon: '🌐',
-    title: 'Third-Party Services',
+    icon: "🌐",
+    title: "Third-Party Services",
     content: (
       <>
         <p>We use the following third-party services:</p>
         <h3 className="pp-sub-title">5.1 Analytics</h3>
         <ul>
           <li>
-            <strong>Purpose:</strong> Understanding user behavior and improving the platform
+            <strong>Purpose:</strong> Understanding user behavior and improving
+            the platform
           </li>
           <li>
-            <strong>Data Shared:</strong> Anonymized usage data, device information
+            <strong>Data Shared:</strong> Anonymized usage data, device
+            information
           </li>
           <li>
             <strong>Provider:</strong> Google Analytics (or similar)
@@ -137,20 +147,21 @@ const sections = [
           </li>
         </ul>
         <p>
-          These third-party services have their own privacy policies. We encourage you to review
-          them to understand their practices.
+          These third-party services have their own privacy policies. We
+          encourage you to review them to understand their practices.
         </p>
       </>
     ),
   },
   {
     id: 6,
-    icon: '🔒',
-    title: 'Data Security',
+    icon: "🔒",
+    title: "Data Security",
     content: (
       <>
         <p>
-          We implement industry-standard security measures to protect your information, including:
+          We implement industry-standard security measures to protect your
+          information, including:
         </p>
         <ul>
           <li>Password encryption (bcrypt or similar)</li>
@@ -159,28 +170,28 @@ const sections = [
           <li>Limited access to personal information</li>
         </ul>
         <p>
-          However, no security system is impenetrable. We cannot guarantee absolute security of
-          information transmitted over the internet.
+          However, no security system is impenetrable. We cannot guarantee
+          absolute security of information transmitted over the internet.
         </p>
       </>
     ),
   },
   {
     id: 7,
-    icon: '🗂️',
-    title: 'Data Retention',
+    icon: "🗂️",
+    title: "Data Retention",
     content: (
       <p>
-        We retain your personal information for as long as your account is active and for 90 days
-        after account deletion for backup and legal compliance purposes. You can request deletion of
-        your data at any time.
+        We retain your personal information for as long as your account is
+        active and for 90 days after account deletion for backup and legal
+        compliance purposes. You can request deletion of your data at any time.
       </p>
     ),
   },
   {
     id: 8,
-    icon: '✅',
-    title: 'Your Rights and Choices',
+    icon: "✅",
+    title: "Your Rights and Choices",
     content: (
       <>
         <p>You have the right to:</p>
@@ -189,16 +200,19 @@ const sections = [
             <strong>Access:</strong> Request a copy of your personal data
           </li>
           <li>
-            <strong>Rectification:</strong> Correct inaccurate or incomplete information
+            <strong>Rectification:</strong> Correct inaccurate or incomplete
+            information
           </li>
           <li>
             <strong>Deletion:</strong> Request deletion of your account and data
           </li>
           <li>
-            <strong>Portability:</strong> Download your data in a portable format
+            <strong>Portability:</strong> Download your data in a portable
+            format
           </li>
           <li>
-            <strong>Opt-out:</strong> Unsubscribe from non-essential communications
+            <strong>Opt-out:</strong> Unsubscribe from non-essential
+            communications
           </li>
         </ul>
       </>
@@ -206,43 +220,48 @@ const sections = [
   },
   {
     id: 9,
-    icon: '👶',
+    icon: "👶",
     title: "Children's Privacy",
     content: (
       <p>
-        CodeVibe is not intended for children under 13 years old. We do not knowingly collect
-        personal information from children under 13. If we learn that we have collected such
-        information, we will delete it immediately.
+        CodeVibe is not intended for children under 13 years old. We do not
+        knowingly collect personal information from children under 13. If we
+        learn that we have collected such information, we will delete it
+        immediately.
       </p>
     ),
   },
   {
     id: 10,
-    icon: '🔄',
-    title: 'Changes to This Policy',
+    icon: "🔄",
+    title: "Changes to This Policy",
     content: (
       <p>
-        We may update this Privacy Policy from time to time. We will notify you of any changes by
-        posting the new Privacy Policy on this page and updating the "Last Updated" date at the top.
+        We may update this Privacy Policy from time to time. We will notify you
+        of any changes by posting the new Privacy Policy on this page and
+        updating the "Last Updated" date at the top.
       </p>
     ),
   },
   {
     id: 11,
-    icon: '📬',
-    title: 'Contact Us',
+    icon: "📬",
+    title: "Contact Us",
     content: (
       <>
-        <p>If you have questions about this Privacy Policy or our privacy practices:</p>
+        <p>
+          If you have questions about this Privacy Policy or our privacy
+          practices:
+        </p>
         <ul>
           <li>
-            📧 Email:{' '}
+            📧 Email:{" "}
             <a href="mailto:privacy@codevibe.com" className="pp-link">
               privacy@codevibe.com
             </a>
           </li>
           <li>
-            🔗 GitHub:{' '}
+            🔗 GitHub:{" "}
             <a
               href="https://github.com/JiyaBatra/CODEVIBE-"
               target="_blank"
@@ -253,7 +272,7 @@ const sections = [
             </a>
           </li>
           <li>
-            💬 Discord:{' '}
+            💬 Discord:{" "}
             <a
               href="https://discord.com/channels/1503405091875455107/1503405094933237853"
               target="_blank"
@@ -269,13 +288,14 @@ const sections = [
   },
   {
     id: 12,
-    icon: '🌍',
-    title: 'GDPR and Regional Compliance',
+    icon: "🌍",
+    title: "GDPR and Regional Compliance",
     content: (
       <p>
-        If you are located in the European Union or other regions with data protection regulations,
-        we comply with GDPR and similar laws. Your data is processed with your consent, and you
-        have the rights outlined in Section 8 above.
+        If you are located in the European Union or other regions with data
+        protection regulations, we comply with GDPR and similar laws. Your data
+        is processed with your consent, and you have the rights outlined in
+        Section 8 above.
       </p>
     ),
   },
@@ -292,7 +312,7 @@ const PPSection = ({ section, index }) => {
           setTimeout(() => setVisible(true), index * 60);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -301,13 +321,14 @@ const PPSection = ({ section, index }) => {
   return (
     <div
       ref={ref}
-      className={`pp-card ${visible ? 'pp-card--visible' : ''}`}
+      className={`pp-card ${visible ? "pp-card--visible" : ""}`}
       style={{ transitionDelay: `${index * 60}ms` }}
     >
       <div className="pp-card-header">
         <span className="pp-icon">{section.icon}</span>
         <h2 className="pp-card-title">
-          <span className="pp-num">{String(section.id).padStart(2, '0')}.</span> {section.title}
+          <span className="pp-num">{String(section.id).padStart(2, "0")}.</span>{" "}
+          {section.title}
         </h2>
       </div>
       <div className="pp-card-body">{section.content}</div>
@@ -324,8 +345,8 @@ const PrivacyPolicy = () => {
       const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
       setScrollPct(Math.min(pct, 100));
     };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -597,7 +618,9 @@ const PrivacyPolicy = () => {
         <div className="pp-hero">
           <div className="pp-badge">Legal Document</div>
           <h1 className="pp-hero-title">Privacy Policy</h1>
-          <p className="pp-hero-sub">Last Updated: May 2026 &nbsp;·&nbsp; Effective Immediately</p>
+          <p className="pp-hero-sub">
+            Last Updated: May 2026 &nbsp;·&nbsp; Effective Immediately
+          </p>
           <hr className="pp-hero-divider" />
         </div>
 
@@ -621,9 +644,11 @@ const PrivacyPolicy = () => {
 
         {/* Footer */}
         <div className="pp-footer-strip">
-          <p>© 2026 <span>CodeVibe</span>. All rights reserved.</p>
-          <p style={{ marginTop: '0.3rem' }}>
-            Questions?{' '}
+          <p>
+            © 2026 <span>CodeVibe</span>. All rights reserved.
+          </p>
+          <p style={{ marginTop: "0.3rem" }}>
+            Questions?{" "}
             <a href="mailto:privacy@codevibe.com" className="pp-link">
               privacy@codevibe.com
             </a>
