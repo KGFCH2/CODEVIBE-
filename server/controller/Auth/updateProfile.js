@@ -21,7 +21,7 @@ const updateProfile = async (req, res) => {
     }
 
     const user = await UserModel.findOneAndUpdate(
-      { Email: tokenEmail },
+      { email: tokenEmail },
       { $set: updateFields },
       { new: true }
     );
