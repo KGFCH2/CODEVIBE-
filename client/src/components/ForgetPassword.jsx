@@ -7,13 +7,14 @@ import forgotPic from "../assets/forgotPassword.png"
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [responseMsg, setResponseMsg] = useState("");
-
+  const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setResponseMsg("");
+    setIsError(false);
     try {
       console.log("Using Backend URL:", API_BASE_URL);
         
@@ -21,8 +22,10 @@ const ForgotPassword = () => {
         Email: email,
       });
       setResponseMsg(res.data.message);
+      setIsError(false);
     } catch (err) {
       setResponseMsg(err.response?.data?.message || "Something went wrong");
+      setIsError(true);
     } finally {
       setLoading(false);
     }
@@ -54,7 +57,14 @@ const ForgotPassword = () => {
               {loading ? "Sending..." : "Send Reset Link"}
             </button>
 
-            {responseMsg && <p style={{ color: "white", marginTop: "1rem", fontSize: "0.9rem" }}>{responseMsg}</p>}
+            {responseMsg && (
+              <p 
+                style={{ color: isError ? "#ff4d6d" : "#2ecc71", marginTop: "1rem", fontSize: "0.9rem" }}
+                aria-live="polite"
+              >
+                {responseMsg}
+              </p>
+            )}
 
             <p style={{marginTop: "1.5rem"}}>
               Back to <Link to="/login">Login</Link>
