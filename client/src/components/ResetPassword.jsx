@@ -64,6 +64,22 @@ const ResetPassword = () => {
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
+            {newPassword && (
+              <ul style={{ color: "lightgray", fontSize: "0.85rem", marginTop: "8px", marginBottom: "15px", listStyleType: "none", paddingLeft: 0 }}>
+                <li style={{ color: newPassword.length >= 8 ? "#2ecc71" : "#ff4d6d", display: "flex", gap: "6px", alignItems: "center" }}>
+                  <span>{newPassword.length >= 8 ? "✔" : "✖"}</span> Minimum 8 characters
+                </li>
+                <li style={{ color: /[A-Z]/.test(newPassword) && /[a-z]/.test(newPassword) ? "#2ecc71" : "#ff4d6d", display: "flex", gap: "6px", alignItems: "center" }}>
+                  <span>{/[A-Z]/.test(newPassword) && /[a-z]/.test(newPassword) ? "✔" : "✖"}</span> Uppercase & lowercase letters
+                </li>
+                <li style={{ color: /[0-9]/.test(newPassword) ? "#2ecc71" : "#ff4d6d", display: "flex", gap: "6px", alignItems: "center" }}>
+                  <span>{/[0-9]/.test(newPassword) ? "✔" : "✖"}</span> At least one number
+                </li>
+                <li style={{ color: /[^A-Za-z0-9]/.test(newPassword) ? "#2ecc71" : "#ff4d6d", display: "flex", gap: "6px", alignItems: "center" }}>
+                  <span>{/[^A-Za-z0-9]/.test(newPassword) ? "✔" : "✖"}</span> At least one special character
+                </li>
+              </ul>
+            )}
 
             <label>CONFIRM PASSWORD:</label>
             <input
