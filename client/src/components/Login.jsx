@@ -5,6 +5,7 @@ import { useAuth } from "../AuthProvider.jsx";
 import API_BASE_URL from "../config/api";
 import loginImage from "../assets/loginImage.png";
 import PasswordField from "./PasswordField";
+import { validateEmail, validatePassword } from "../utils/validation";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,8 +24,8 @@ const Login = () => {
     e.preventDefault();
 
     const nextErrors = {
-      email: email.trim() ? "" : "Email is required",
-      password: password.trim() ? "" : "Password is required",
+      email: validateEmail(email),
+      password: validatePassword(password),
     };
 
     setErrors(nextErrors);
@@ -116,9 +117,17 @@ const Login = () => {
               onChange={(e) => {
                 const nextEmail = e.target.value;
                 setEmail(nextEmail);
+                if (errors.email) {
+                  setErrors((prev) => ({
+                    ...prev,
+                    email: validateEmail(nextEmail),
+                  }));
+                }
+              }}
+              onBlur={() => {
                 setErrors((prev) => ({
                   ...prev,
-                  email: nextEmail.trim() ? "" : "Email is required",
+                  email: validateEmail(email),
                 }));
               }}
               aria-invalid={!!errors.email}
