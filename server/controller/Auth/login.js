@@ -6,7 +6,6 @@ const escapeRegex = (value = "") => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 
 const login = async (req, res, next) => {
   try {
-<<<<<<< HEAD
     const email = (req.body.email || req.body.Email || "").trim().toLowerCase();
     const { password } = req.body;
 
@@ -17,18 +16,7 @@ const login = async (req, res, next) => {
       });
     }
 
-    const user = await UserModel.findOne({
-      $or: [
-        { email },
-        { Email: { $regex: `^${escapeRegex(email)}$`, $options: "i" } },
-      ],
-    });
-=======
-    const { Email, email, password } = req.body;
-    const loginEmail = Email || email;
-
-    const user = await UserModel.findOne({ Email: loginEmail });
->>>>>>> 42a9a54 (fixed the signup.jsx and validations)
+    const user = await UserModel.findOne({ email });
     if (!user) {
       return res.status(404).json({
         success: false,
