@@ -27,15 +27,26 @@ const FAQItem = ({ item, index, activeIndex, setActiveIndex }) => {
 
   return (
     <div className="faq-item">
-      <button className="faq-question" onClick={toggleAccordion}>
+      <button 
+        className="faq-question" 
+        onClick={toggleAccordion}
+        id={`faq-question-${index}`}
+        aria-expanded={isOpen}
+        aria-controls={`faq-answer-${index}`}
+      >
         <span>{item.question}</span>
 
-        <span className="faq-icon">
+        <span className="faq-icon" aria-hidden="true">
           {isOpen ? "-" : "+"}
         </span>
       </button>
 
-      <div className={`faq-answer ${isOpen ? "open" : ""}`}>
+      <div 
+        className={`faq-answer ${isOpen ? "open" : ""}`}
+        id={`faq-answer-${index}`}
+        role="region"
+        aria-labelledby={`faq-question-${index}`}
+      >
         <p>{item.answer}</p>
       </div>
     </div>
