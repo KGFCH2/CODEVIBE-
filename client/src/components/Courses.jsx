@@ -5,7 +5,7 @@ import RoadmapGenerator from "./RoadmapGenerator";
 import FAQ from "./FAQ";
 import Testimonials from "./testimonials";
 import EmptyState from "./EmptyState";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaSearch } from "react-icons/fa";
 
 // Images
 import htmlLogo from '../assets/htmlLogo.png';
@@ -182,11 +182,9 @@ const Courses = () => {
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '20px',
-          marginBottom: '32px',
+          marginBottom: '16px',
           marginTop: user ? '0' : '32px',
         }}
       >
@@ -196,10 +194,35 @@ const Courses = () => {
             fontSize: '2rem',
             margin: 0,
             fontWeight: '600',
+            textAlign: 'center',
           }}
         >
           📚 Available Courses
         </h2>
+      </div>
+
+      {/* Live Search Bar */}
+      <div className="search-container">
+        <div style={{ position: "relative", width: "100%", maxWidth: "620px" }}>
+          <FaSearch
+            style={{
+              position: "absolute",
+              left: "1.2rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "rgba(255, 77, 109, 0.6)",
+              fontSize: "1.1rem",
+              pointerEvents: "none",
+            }}
+          />
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search for courses (HTML, React, DSA...)"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* Category Filter Buttons */}
