@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "../AuthProvider.jsx";
 import { useSearch } from "../context/SearchContext.jsx";
 import { FaSignInAlt, FaSignOutAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes } from "react-icons/fa";
-import logo from "../assets/websitelogo.png";
+import logo from "../assets/favicon.png";
 
 const COURSES = [
   { label: "HTML Basics", path: "/HtmlLesson" },
