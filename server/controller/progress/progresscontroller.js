@@ -3,13 +3,16 @@ const Progress = require('../../models/progress');
 exports.getProgress = async (req, res) => {
   try {
     const email = req.params.email;
-    if (!email) return res.status(400).json({ message: 'Email required' });
 
-    if (req.user.email !== email) {
-      return res.status(403).json({ message: 'Forbidden: you can only access your own progress' });
+    if (!email) {
+      return res.status(400).json({ message: 'Email required' });
     }
 
     const progress = await Progress.findOne({ email }).select('-password');
+
+    if (req.user && req.user.email !== email) {
+      return res.status(403).json({ message: 'Forbidden: you can only access your own progress' });
+    }
     
     if (!progress) {
       return res.json({ 
@@ -17,10 +20,13 @@ exports.getProgress = async (req, res) => {
         completedLessons: [], 
         scores: {},
         xp: 0,
-        level: 1
+        level: 1,
+        currentStreak: 0,
+        longestStreak: 0,
+        dailyGoal: 1,
       });
     }
-    
+
     res.json(progress);
   } catch (err) {
     console.error(err);

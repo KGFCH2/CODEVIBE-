@@ -22,7 +22,11 @@ exports.getLesson = async (req, res) => {
   try {
     const { id } = req.params;
     const lesson = await Lesson.findOne({ lessonId: id });
-    if (!lesson) return res.status(404).json({ message: 'Lesson not found' });
+
+    if (!lesson) {
+      return res.status(404).json({ message: 'Lesson not found' });
+    }
+
     res.json(lesson);
   } catch (err) {
     console.error(err);
@@ -34,8 +38,38 @@ exports.completeLesson = async (req, res) => {
   try {
     const { email, score, coins, learningTime, type } = req.body;
     const lessonId = req.params.id;
-    
-    if (!email) return res.status(400).json({ message: 'Email is required' });
+
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    const existingProgress = await Progress.findOne({ email });
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let currentStreak = existingProgress?.currentStreak || 0;
+    let longestStreak = existingProgress?.longestStreak || 0;
+
+    if (!existingProgress?.lastActiveDate) {
+      currentStreak = 1;
+    } else {
+      const lastDate = new Date(existingProgress.lastActiveDate);
+      lastDate.setHours(0, 0, 0, 0);
+
+      const diffDays = Math.floor(
+        (today - lastDate) / (1000 * 60 * 60 * 24)
+      );
+
+      if (diffDays === 1) {
+        currentStreak += 1;
+      } else if (diffDays > 1) {
+        currentStreak = 1;
+      }
+      // diffDays === 0 -> same day, don't change streak
+    }
+
+    longestStreak = Math.max(longestStreak, currentStreak);
 
     let progress = await Progress.findOne({ email });
     const isNewCompletion = !progress || !progress.completedLessons.includes(lessonId);
@@ -78,13 +112,20 @@ exports.completeLesson = async (req, res) => {
           [`scores.${lessonId}`]: score || 0,
           xp: newTotalXp,
           level: newLevel,
-          badges: earnedBadges
+          badges: earnedBadges,
+          currentStreak,
+          longestStreak,
+          lastActiveDate: today,
         }
       },
-      { new: true, upsert: true }
+      {
+        new: true,
+        upsert: true,
+      }
     );
 
     const user = await User.findOne({ Email: email }).lean();
+
     try {
       await Analytics.create({
         userId: user?._id || null,
@@ -107,6 +148,9 @@ exports.completeLesson = async (req, res) => {
       message: 'Lesson marked as completed',
       completedLessons: progress.completedLessons,
       scores: progress.scores,
+      currentStreak: progress.currentStreak,
+      longestStreak: progress.longestStreak,
+      dailyGoal: progress.dailyGoal,
     });
   } catch (err) {
     console.error(err);

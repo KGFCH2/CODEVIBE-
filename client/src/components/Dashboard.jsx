@@ -802,12 +802,36 @@ const Dashboard = () => {
   const metrics = useMemo(() => {
     const stats = analytics?.stats || {};
     return [
-      { label: 'Lessons Completed', value: formatNumber(stats.lessonsCompleted), icon: <BookOpen /> },
-      { label: 'Subjects Active',   value: formatNumber(analytics?.subjects.length || 0), icon: <LayoutDashboard /> },
-      { label: 'Accuracy',          value: `${stats.averageScore || 0}%`, icon: <Sparkles /> },
-      { label: 'Total Points',      value: formatNumber(stats.totalPoints), icon: <Wand2 /> },
-      { label: '🔥 Streak (days)',  value: formatNumber(stats.streak), icon: <Star /> },
-      { label: '🏆 Best Streak',   value: formatNumber(stats.longestStreak), icon: <UserCircle /> },
+      {
+        label: "Lessons Completed",
+        value: formatNumber(stats.lessonsCompleted),
+        icon: <BookOpen />,
+      },
+      {
+        label: "Subjects Active",
+        value: formatNumber(analytics?.subjects?.length || 0),
+        icon: <LayoutDashboard />,
+      },
+      {
+        label: "Accuracy",
+        value: `${stats.averageScore || 0}%`,
+        icon: <Sparkles />,
+      },
+      {
+        label: "Total Points",
+        value: formatNumber(stats.totalPoints),
+        icon: <Wand2 />,
+      },
+      {
+        label: "Learning Streak",
+        value: formatNumber(stats.streak),
+        icon: <UserCircle />,
+      },
+      {
+        label: "Longest Streak",
+        value: formatNumber(analytics?.subjects?.length || 0),
+        icon: <Star />,
+      },
     ];
   }, [analytics]);
 
@@ -1011,10 +1035,17 @@ const Dashboard = () => {
                   <span>Joined</span>
                   <strong>{analytics?.profile?.joinedAt ? new Date(analytics.profile.joinedAt).toLocaleDateString() : "—"}</strong>
                 </div>
-                
                 <StreakWeekVisualizer events={analytics?.analytics?.timelines?.points || []} streak={analytics?.stats?.streak || 0} />
 
                 <div className="profile-details-row" style={{ marginTop: '1rem' }}>
+                  <div>
+                    <span>Current Streak</span>
+                    <strong>{formatNumber(analytics?.stats?.streak)}</strong>
+                  </div>
+                  <div>
+                    <span>Longest Streak</span>
+                    <strong>{formatNumber(analytics?.stats?.longestStreak || 0)}</strong>
+                  </div>
                   <div className="profile-clock">
                     <span>Clock</span>
                     <strong>{currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</strong>
