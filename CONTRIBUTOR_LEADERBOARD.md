@@ -14,8 +14,8 @@ Last updated: 2026-05-31
 
 | Rank | Contributor | Score | Commits | Merged PRs | Closed Issues |
 | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | [@sricharan-213](https://github.com/sricharan-213) | 131 | 8 | 7 | 9 |
-| 2 | [@Pcmhacker-piro](https://github.com/Pcmhacker-piro) | 130 | 0 | 5 | 16 |
+| 1 | [@Pcmhacker-piro](https://github.com/Pcmhacker-piro) | 145 | 0 | 6 | 17 |
+| 2 | [@sricharan-213](https://github.com/sricharan-213) | 131 | 8 | 7 | 9 |
 | 3 | [@Aayuiiitmg](https://github.com/Aayuiiitmg) | 104 | 12 | 8 | 0 |
 | 4 | [@namrarafique93-del](https://github.com/namrarafique93-del) | 97 | 11 | 5 | 5 |
 | 5 | [@KGFCH2](https://github.com/KGFCH2) | 87 | 1 | 1 | 15 |
