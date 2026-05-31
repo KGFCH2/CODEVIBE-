@@ -96,7 +96,7 @@ const Head = () => {
   };
 
   return (
-    <header className="site-header">
+    <header className="site-header" ref={wrapperRef}>
       {/* Row 1: Logo + Nav + Hamburger */}
       <div className="header-top">
         <div className="header-logo-wrapper">
@@ -223,7 +223,7 @@ const Head = () => {
 
       {/* Row 3: Search Bar */}
       {isHomePage && (
-        <div className="header-search-row" ref={wrapperRef}>
+        <div className="header-search-row">
           <form
             className={`search-form ${focused ? "search-form--focused" : ""}`}
             onSubmit={handleSubmit}
