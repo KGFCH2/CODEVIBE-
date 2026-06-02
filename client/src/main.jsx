@@ -146,6 +146,7 @@ import DsaLesson9 from './components/DsaLesson9.jsx';
 import DsaLesson10 from './components/DsaLesson10.jsx';
 import DsaLesson11 from './components/DsaLesson11.jsx';
 import DsaLesson12 from './components/DsaLesson12.jsx';
+import DsaLesson13 from './components/DsaLesson13.jsx';
 
 
 // Express Lessons
@@ -365,6 +366,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/DsaLesson10" element={<DsaLesson10 />} />
           <Route path="/DsaLesson11" element={<DsaLesson11 />} />
           <Route path="/DsaLesson12" element={<DsaLesson12 />} />
+          <Route path="/DsaLesson13" element={<DsaLesson13 />} />
 
 
           {/* Express Lessons 1–10 */}
