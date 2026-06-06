@@ -17,9 +17,9 @@ Last updated: 2026-06-06
 | 1 | [@Pcmhacker-piro](https://github.com/Pcmhacker-piro) | 270 | 0 | 7 | 40 |
 | 2 | [@thedaripanator](https://github.com/thedaripanator) | 136 | 13 | 8 | 6 |
 | 3 | [@sricharan-213](https://github.com/sricharan-213) | 131 | 8 | 7 | 9 |
-| 4 | [@Mahi-19-design](https://github.com/Mahi-19-design) | 112 | 6 | 5 | 10 |
-| 5 | [@Dhruvil20060](https://github.com/Dhruvil20060) | 111 | 8 | 6 | 7 |
-| 6 | [@Saubhagya1621](https://github.com/Saubhagya1621) | 111 | 8 | 6 | 7 |
+| 4 | [@Saubhagya1621](https://github.com/Saubhagya1621) | 126 | 8 | 7 | 8 |
+| 5 | [@Mahi-19-design](https://github.com/Mahi-19-design) | 112 | 6 | 5 | 10 |
+| 6 | [@Dhruvil20060](https://github.com/Dhruvil20060) | 111 | 8 | 6 | 7 |
 | 7 | [@Aayuiiitmg](https://github.com/Aayuiiitmg) | 104 | 12 | 8 | 0 |
 | 8 | [@namrarafique93-del](https://github.com/namrarafique93-del) | 97 | 11 | 5 | 5 |
 | 9 | [@KGFCH2](https://github.com/KGFCH2) | 87 | 1 | 1 | 15 |
