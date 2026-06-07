@@ -44,7 +44,7 @@ Last updated: 2026-06-07
 | 28 | [@anshul23102](https://github.com/anshul23102) | 47 | 1 | 1 | 7 |
 | 29 | [@YashvardhanJani](https://github.com/YashvardhanJani) | 47 | 6 | 2 | 3 |
 | 30 | [@shyam-medh](https://github.com/shyam-medh) | 46 | 13 | 1 | 2 |
-| 31 | [@Tech4Aditya](https://github.com/Tech4Aditya) | 41 | 3 | 2 | 3 |
+| 31 | [@Tech4Aditya](https://github.com/Tech4Aditya) | 46 | 3 | 2 | 4 |
 | 32 | [@advikdivekar](https://github.com/advikdivekar) | 40 | 5 | 3 | 0 |
 | 33 | [@anujsharma8d](https://github.com/anujsharma8d) | 40 | 5 | 2 | 2 |
 | 34 | [@sonusharma6-dsa](https://github.com/sonusharma6-dsa) | 40 | 0 | 0 | 8 |
