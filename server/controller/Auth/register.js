@@ -76,6 +76,24 @@ const register = async (req, res, next) => {
 
     console.log("✅ User created:", userCreate._id);
 
+    // Auto-provision Progress document with gamification defaults
+    try {
+      const Progress = require('../../models/progress');
+      await Progress.create({
+        email,
+        xp: 0,
+        level: 1,
+        completedLessons: [],
+        scores: {},
+        currentStreak: 0,
+        longestStreak: 0,
+        badges: []
+      });
+      console.log("✅ Gamification Progress document initialized for:", email);
+    } catch (progressErr) {
+      console.error("⚠️ Failed to auto-initialize progress document:", progressErr.message);
+    }
+
     // Generate JWT
     const token = jwt.sign(
       {
