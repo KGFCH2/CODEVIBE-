@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 // Dynamic API URL config resolving to localhost in dev and Render live server in production
 import API_BASE_URL from "../config/api";
+import { validateStaticSafety, instrumentLoopSafety } from "../utils/compilerSecurity";
 
 const SCORING = (attempt) =>
   attempt === 1 ? 100 :
@@ -289,6 +290,12 @@ const Compiler = ({
   };
 
   const runJSFamily = (attempt, iframeDoc) => {
+    const safetyCheck = validateStaticSafety(code);
+    if (!safetyCheck.safe) {
+      fail({ type: "ExecutionError", message: safetyCheck.error, got: safetyCheck.error });
+      return;
+    }
+    const safeCode = instrumentLoopSafety(code);
     iframeDoc.open();
     iframeDoc.write(`
       <html>
@@ -302,7 +309,7 @@ const Compiler = ({
                 const oldLog = console.log;
                 console.log = (...args) => { logs.push(args.join(" ")); try{oldLog(...args)}catch(e){}; out.textContent = logs.join("\\n"); };
                 const killer = setTimeout(() => { throw new Error("Timeout"); }, 1500);
-                ${code}
+                ${safeCode}
                 clearTimeout(killer);
               } catch(e) { document.body.textContent = "Error: " + (e?.message || e); }
             })();
