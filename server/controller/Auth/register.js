@@ -95,9 +95,12 @@ const register = async (req, res, next) => {
 
     // duplicate key error fallback
     if (error.code === 11000) {
+      const duplicateField = error.keyValue ? Object.keys(error.keyValue)[0] : "email";
       return res.status(409).json({
         success: false,
-        message: "User already exists",
+        message: duplicateField === "email" 
+          ? "User already exists" 
+          : `Registration failed: A user with this ${duplicateField} already exists.`,
       });
     }
 
